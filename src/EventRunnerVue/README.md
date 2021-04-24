@@ -1,6 +1,6 @@
-# eventrunnervue
+# runpls
 
-> This is a vue part of our site
+> A Vue.js project
 
 ## Build Setup
 

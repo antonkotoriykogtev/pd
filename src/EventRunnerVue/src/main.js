@@ -2,15 +2,33 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import router from './router'
+import store from './store/main'
+import VueAxios from 'vue-axios'
+import jwt_decode from 'jwt-decode'
+import Buefy from 'buefy'
+import 'buefy/dist/buefy.css'
 
-Vue.config.productionTip = false
+import Axios from 'axios'
 
+Vue.prototype.$http = Axios;
+const token = localStorage.getItem('token')
+if (token) {
+  Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+}
+
+
+
+
+Vue.use(Buefy, {
+  defaultIconPack: 'fa'
+
+});
 /* eslint-disable no-new */
-/* eslint-enable no-unused-vars */
-// eslint-disable-next-line
-/* eslint no-new: "error" */
 new Vue({
   el: '#app',
+  router,
+  store,
   components: { App },
   template: '<App/>'
 })
